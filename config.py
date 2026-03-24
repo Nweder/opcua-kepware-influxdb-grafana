@@ -1,5 +1,11 @@
 # Kepware REST Server base URL
-KEPWARE_BASE_URL = "https://localhost:39320/iotgateway"
+# For local testing with the included mock server the default is set to
+# http://localhost:5000. In production change this to your Kepware URL
+# (for example: https://your-kepware:39320/iotgateway) or set the
+# KEPWARE_BASE_URL environment variable.
+import os
+
+KEPWARE_BASE_URL = os.getenv("KEPWARE_BASE_URL", "http://localhost:5000")
 
 # Tags/signals to read from Kepware
 TAG_IDS = [
