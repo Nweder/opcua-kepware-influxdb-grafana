@@ -24,3 +24,7 @@ POLL_INTERVAL = 1
 # output to file is disabled. Otherwise the path is used and each poll will be
 # appended as one JSON object per line.
 JSON_OUTPUT_FILE = "data.jsonl"
+
+# When testing locally without InfluxDB, set this to False to skip writes to Influx
+# and only produce the JSON lines. Set to True to enable Influx writes.
+WRITE_TO_INFLUX = False

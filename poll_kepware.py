@@ -3,9 +3,8 @@ from datetime import datetime, timezone
 
 import requests
 
-from config import KEPWARE_BASE_URL, TAG_IDS, MACHINE_ID, POLL_INTERVAL
+from config import KEPWARE_BASE_URL, TAG_IDS, MACHINE_ID, POLL_INTERVAL, WRITE_TO_INFLUX, JSON_OUTPUT_FILE
 from writer import write_raw_data
-from config import JSON_OUTPUT_FILE
 import json
 import os
 
@@ -63,14 +62,19 @@ def main():
                     "quality": quality
                 }
 
-                # Also write individual point to InfluxDB as before
-                write_raw_data(
-                    machine_id=MACHINE_ID,
-                    signal_name=signal_name,
-                    value=value,
-                    timestamp=timestamp,
-                    quality=quality
-                )
+                # Optionally write individual point to InfluxDB
+                if WRITE_TO_INFLUX:
+                    try:
+                        write_raw_data(
+                            machine_id=MACHINE_ID,
+                            signal_name=signal_name,
+                            value=value,
+                            timestamp=timestamp,
+                            quality=quality
+                        )
+                    except Exception as e:
+                        # Don't let a write failure stop the whole poll; log and continue
+                        print(f"Warning: failed to write to InfluxDB for {signal_name}: {e}")
 
             # If JSON output is enabled, append this poll as a single JSON line
             if JSON_OUTPUT_FILE:
