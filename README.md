@@ -56,16 +56,3 @@ pip install -r requirements.txt
 ```powershell
 python poll_kepware.py
 ```
-
-Notes and recommendations
-- The example uses `verify=False` for requests; only do this for local/self-signed certs.
-- Do not keep production tokens in source control. Prefer environment variables
-	or a `.env` file (use `python-dotenv`) and load them in `config.py`.
-- `POLL_INTERVAL` is in seconds — adjust to your load and InfluxDB write capacity.
-- `writer.py` attempts to store numeric values in `value` and falls back to `value_str`
-	for non-numeric payloads.
-
-If you want, I can:
-- Add `.env` loading and update `config.py` to fetch secrets from environment variables.
-- Add simple unit tests and a CI workflow.
-- Improve logging and retry/backoff in `poll_kepware.py`.
