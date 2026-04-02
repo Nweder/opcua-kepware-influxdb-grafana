@@ -22,6 +22,10 @@ Grafana is used as the visualization layer for the stored data.
 pip install -r requirements.txt
 Run:
 python poll_kepware.py
+<<<<<<< HEAD
 Branches
 main contains the mock-based MVP solution
 laser2-test contains the test setup for connection to the real Kepware environment
+=======
+```
+>>>>>>> 82518bbee84772852cb12e4cd23d27e08e9dcaa0
