@@ -1,16 +1,3 @@
-Nej, det där ser inte professionellt ut.
-
-Det du ser är en **merge/cherry-pick-konflikt** i README:
-
-* `<<<<<<< HEAD`
-* `=======`
-* `>>>>>>> ...`
-
-De måste bort.
-
-Klistra in detta som **hela README.md**:
-
-````md
 # Solution 1 - Kepware -> Polling Script -> InfluxDB -> Grafana
 
 This repository contains an MVP developed within a bachelor’s thesis project at University West, conducted in collaboration with VBG Group.
