@@ -1,56 +1,34 @@
+from opcua import Client
+from datetime import datetime
 import time
-from datetime import datetime, timezone
-import requests
-
-from config import KEPWARE_BASE_URL, TAG_IDS, MACHINE_ID, POLL_INTERVAL
+from config import OPC_UA_URL, TAG_IDS, MACHINE_ID, POLL_INTERVAL
 from writer import write_raw_data
 
+client = Client(OPC_UA_URL)
 
-def read_tags():
-    params = [("ids", tag_id) for tag_id in TAG_IDS]
+try:
+    client.connect()
+    print("Connected to Laser2")
 
-    response = requests.get(
-        f"{KEPWARE_BASE_URL}/read",
-        params=params,
-        verify=False,
-        timeout=10
-    )
-    response.raise_for_status()
-    return response.json()
+    nodes = {tag: client.get_node(tag) for tag in TAG_IDS}
 
-
-def get_signal_name(tag_id):
-    return tag_id.split(".")[-1]
-
-
-def main():
     while True:
-        try:
-            tags = read_tags()
+        timestamp = datetime.utcnow()
 
-            for tag in tags:
-                tag_id = tag["id"]
-                value = tag["v"]
-                quality = str(tag.get("s", "good"))
-                timestamp = datetime.now(timezone.utc).isoformat()
+        for tag, node in nodes.items():
+            try:
+                value = node.get_value()
+                print(tag, value)
 
-                signal_name = get_signal_name(tag_id)
+                write_raw_data(MACHINE_ID, tag, value, timestamp)
 
-                write_raw_data(
-                    machine_id=MACHINE_ID,
-                    signal_name=signal_name,
-                    value=value,
-                    timestamp=timestamp,
-                    quality=quality
-                )
-
-                print(f"Wrote: {signal_name}={value} quality={quality}")
-
-        except Exception as error:
-            print(f"Error: {error}")
+            except Exception as e:
+                print("Error:", tag, e)
 
         time.sleep(POLL_INTERVAL)
 
+except Exception as e:
+    print("Connection error:", e)
 
-if __name__ == "__main__":
-    main()
+finally:
+    client.disconnect()
