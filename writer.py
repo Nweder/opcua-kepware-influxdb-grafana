@@ -10,6 +10,7 @@ client = InfluxDBClient(
 
 write_api = client.write_api(write_options=SYNCHRONOUS)
 
+
 def write_raw_data(machine_id, signal_name, value, timestamp, quality="good"):
     point = (
         Point("machine_data")
