@@ -1,3 +1,16 @@
+Nej, det där ser inte professionellt ut.
+
+Det du ser är en **merge/cherry-pick-konflikt** i README:
+
+* `<<<<<<< HEAD`
+* `=======`
+* `>>>>>>> ...`
+
+De måste bort.
+
+Klistra in detta som **hela README.md**:
+
+````md
 # Solution 1 - Kepware -> Polling Script -> InfluxDB -> Grafana
 
 This repository contains an MVP developed within a bachelor’s thesis project at University West, conducted in collaboration with VBG Group.
@@ -20,12 +33,17 @@ Grafana is used as the visualization layer for the stored data.
 1. Install dependencies:
 ```bash
 pip install -r requirements.txt
-Run:
+````
+
+2. Run:
+
+```bash
 python poll_kepware.py
-<<<<<<< HEAD
-Branches
-main contains the mock-based MVP solution
-laser2-test contains the test setup for connection to the real Kepware environment
-=======
 ```
->>>>>>> 82518bbee84772852cb12e4cd23d27e08e9dcaa0
+
+## Branches
+
+* `main` contains the mock-based MVP solution
+* `laser2-test` contains the test setup for connection to the real Kepware environment
+
+````
