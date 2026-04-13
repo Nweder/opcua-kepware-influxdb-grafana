@@ -45,10 +45,11 @@ influxd
 ```
 Open in browser:
 http://localhost:8086
-
+```markdown
 Login:
 Username: admin
 Password: admin123
+```
 
 ### Step 3 – Start Grafana
 ```bash
@@ -58,11 +59,12 @@ grafana-server
 
 Open in browser:
 http://localhost:3000
-
+```markdown
 Login:
 Username: admin
 Password: admin123
-
+```
+---
 ### Dashboard Purpose
 
 
@@ -76,26 +78,26 @@ other selected machine signals
 
 This supports a clearer overview of machine behavior and can contribute to maintenance-related monitoring.
 
-Technologies
-Python
-OPC UA
-Kepware
-InfluxDB
-Grafana
-Branch Information
+<br>
 
-### This repository contains two separate setup variants:
+### Technologies: Python, OPC UA, Kepware, InfluxDB, Grafana.
 ---
+<br>
 
+# Branch Information
+
+#### This repository contains two separate setup variants:
 ```markdown
 main → cloud-based version 
 vbg-local-server → local / on-premise version
 ```
-Grafana Dashboard
+---
 
 Below is an example of the local Grafana dashboard used in this setup.
+<br>
+<br>
 
-## Grafana Dashboard
+# Grafana Dashboard
 
 Below is an example of the local Grafana dashboard used in this setup.
 
