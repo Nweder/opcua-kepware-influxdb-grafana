@@ -12,6 +12,7 @@ class Handler(BaseHTTPRequestHandler):
             ids = qs.get('ids', [])
             response = []
             for id in ids:
+                # simple simulated values: numeric for temperature-like tags, bool/int for signals
                 if 'temp' in id.lower() or 'temperature' in id.lower():
                     val = round(20 + random.random() * 10, 2)
                 else:

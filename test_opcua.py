@@ -1,3 +1,5 @@
+#testing connaction to Kepware OPC UA server and reading a single value
+
 from opcua import Client
 
 url = "opc.tcp://REMOVED_IP:56000"
