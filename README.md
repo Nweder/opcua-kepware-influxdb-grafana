@@ -1,36 +1,59 @@
-# Solution 1 - Kepware -> Polling Script -> InfluxDB -> Grafana
+# OPC-UA Machine Monitoring System
 
-This repository contains an MVP developed within a bachelor’s thesis project at University West, conducted in collaboration with VBG Group.
+This project presents a real-time data pipeline for industrial machine monitoring, developed as part of a bachelor thesis.
 
-The purpose of the solution is to collect selected machine signals from Kepware, transfer them to InfluxDB, and support visualization in Grafana.
+The system collects machine-related data from an OPC UA-based source, processes it using Python, stores it in InfluxDB Cloud, and visualizes it in Grafana. The purpose of the solution is to support structured machine monitoring and maintenance-related follow-up in an industrial context.
 
-## Files
-- `config.py` - configuration for Kepware and InfluxDB
-- `poll_kepware.py` - reads selected tags from Kepware and forwards the data
-- `writer.py` - writes data to InfluxDB
-- `mock_kepware.py` - simulates a Kepware-like data source for testing
-- `requirements.txt` - Python dependencies
+## System Architecture
 
-## Configuration
-Update `config.py` with the required Kepware and InfluxDB settings.
+OPC UA / Kepware → Python Data Collection Script → InfluxDB Cloud → Grafana
 
-Grafana is used as the visualization layer for the stored data.
+## Overview
 
-## Setup
-1. Install dependencies:
-```bash
-pip install -r requirements.txt
-````
+This branch (`main`) contains the **cloud-based version** of the project.
 
-2. Run:
+It is intended for:
+- development
+- testing
+- cloud-based data storage
+- remote visualization
 
-```bash
-python poll_kepware.py
-```
+A separate branch is available for the **local / on-premise VBG server setup**:
 
-## Branches
+- `vbg-local-server` → local InfluxDB + local Grafana + VBG/local server configuration
 
-* `main` contains the mock-based MVP solution
-* `laser2-test` contains the test setup for connection to the real Kepware environment
+## Cloud-Based Setup
 
-````
+In this version, the Python script collects machine-related data and writes it to InfluxDB Cloud. Grafana is then used to visualize the stored values.
+
+This setup is suitable for:
+- prototyping
+- development
+- remote access
+- scalable monitoring environments
+
+## Main Components
+
+- **Python** for data collection and transfer
+- **OPC UA / Kepware** as machine data source
+- **InfluxDB Cloud** for time-series storage
+- **Grafana** for visualization
+
+## Project Purpose
+
+The project was developed to demonstrate how machine-related data can be collected, transferred, stored, and visualized through a structured pipeline. The implemented solution supports monitoring of selected machine values and provides a basis for maintenance-related decision support.
+
+## Deployment Variants
+
+This repository contains two different setup variants:
+
+- **`main`** → cloud-based version
+- **`vbg-local-server`** → local / on-premise version for VBG server environment
+
+## Technologies
+
+- Python
+- OPC UA
+- Kepware
+- InfluxDB Cloud
+- Grafana
