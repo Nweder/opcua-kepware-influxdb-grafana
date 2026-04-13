@@ -56,7 +56,6 @@ Open in browser:
 http://localhost:3000
 
 Login:
-
 Username: admin
 Password: admin123
 Dashboard Purpose
@@ -82,3 +81,9 @@ Branch Information
 This repository contains two separate setup variants:
 
 main → cloud-based version
+
+## Grafana Dashboard
+
+Below is an example of the local Grafana dashboard used in this setup.
+
+![Grafana Dashboard](/images/image_grafana.PNG)
