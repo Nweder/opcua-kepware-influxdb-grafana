@@ -86,4 +86,4 @@ main → cloud-based version
 
 Below is an example of the local Grafana dashboard used in this setup.
 
-![Grafana Dashboard](/images/image_grafana.PNG)
+![Grafana Dashboard](images/image_grafana.PNG)
