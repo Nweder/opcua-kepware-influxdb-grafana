@@ -2,7 +2,7 @@
 
 from opcua import Client
 
-url = "opc.tcp://REMOVED_IP:56000"
+url = "opc.tcp://REMOVED_HOST:56000"
 client = Client(url)
 
 try:

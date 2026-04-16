@@ -3,7 +3,7 @@ import os
 
 load_dotenv()
 
-OPC_UA_URL = "opc.tcp.://REMOVED_IP:56000"
+OPC_UA_URL = "opc.tcp://YOUR_SERVER:56000"
  
 # Real time tags 
 TAG_IDS = [
